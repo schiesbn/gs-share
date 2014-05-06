@@ -1,23 +1,25 @@
 (function () {
     'use strict';
     /**
-      * 'Share' widget for GNU social
-      *
-      * We make a few assumptions about the target instance:
-      *   1) The API root is in the default location
-      *   2) Fancy URLs are enabled
-      *   3) CORS is allowed
-      *   4) The Bookmark plugin is enabled
-      *
-      * If 1), 3) or 4) are wrong, we fall back to a regular
-      * notice (instead of a bookmark notice)
-      *
-      * If 2) is wrong the user will be directed to a 404 :(
-      */
+     * 'Share' widget for GNU social
+     * http://code.chromic.org/project/view/2/
+     *
+     * We make a few assumptions about the target instance:
+     *   1) The API root is in the default location
+     *   2) Fancy URLs are enabled
+     *   3) CORS is allowed
+     *   4) The Bookmark plugin is enabled
+     *
+     * If 1), 3) or 4) are wrong, we fall back to a regular
+     * notice (instead of a bookmark notice)
+     *
+     * If 2) is wrong the user will be directed to a 404 :(
+     */
 
     // TODO: input sanitation [1], [2]
     // TODO: server-side fallback if JS is disabled
     // TODO: user feedback when invalid account id is provided [3]
+    // TODO: only hijack left-clicks (not right, middle) [4]
 
     var createForm,
         bindClicks,
@@ -102,7 +104,7 @@
             var target = e.target,
                 urlParams;
 
-            if (target.className.match(/js-gs-share/)) {
+            if (target.className.match(/js-gs-share/)) { // [4]
                 e.preventDefault();
 
                 urlParams = extractURLParams(target.search);
