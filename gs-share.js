@@ -18,7 +18,6 @@
 
     // TODO: input sanitation [1], [2]
     // TODO: server-side fallback if JS is disabled
-    // TODO: user feedback when invalid account id is provided [3]
     // TODO: only hijack left-clicks (not right, middle) [4]
 
     var createForm,
@@ -52,6 +51,11 @@
 
     // Create the form that we'll re-use throughout the page
     createForm = function () {
+        var err = document.createElement('div');
+        err.setAttribute('class', 'gs-share-err');
+        err.setAttribute('tabindex', '-1');
+        err.textContent = 'The account id provided is invalid';
+
         frm = document.createElement('form');
 
         frm.setAttribute('class', 'gs-share-form');
@@ -60,6 +64,7 @@
             '<input type="text" id="gs-account" placeholder="user@example.org" /><br />' +
             '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">Share as a bookmark</label><br />' +
             '<input type="submit" />';
+		frm.insertBefore(err, frm.firstChild);
 
         frm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -92,7 +97,8 @@
                     shareAsNotice(shareTitle, shareURL, domain);
                 }
             } else { // Invalid account id
-                // [3]
+                err.setAttribute('aria-hidden', 'false');
+                err.focus();
             }
         });
 
