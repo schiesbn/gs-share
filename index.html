@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title from document</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gs-share {margin-bottom: 12px;}
+  </style>
+</head>
+<body>
+
+<h2>With server-side fallback</h2>
+<div class="gs-share">
+  <a href="share.php?url=URL-from-href&amp;title=TITLE-from-href" class="js-gs-share">Share on GNU social</a>
+</div>
+
+<h2>Without server-side fallback, without data-* attributes. Will share the current page.</h2>
+<div class="gs-share">
+  <button class="js-gs-share">Share on GNU social</button>
+</div>
+
+<h2>Without server-side fallback, using data-* attributes</h2>
+<div class="gs-share">
+  <button data-url="URL-from-data" data-title="TITLE-from-data" class="js-gs-share">Share on GNU social</button>
+</div>
+
+<script src="gs-share.js"></script>
+</body>
+</html>
