@@ -53,6 +53,7 @@
         var err = document.createElement('div');
         err.setAttribute('class', 'gs-share-err');
         err.setAttribute('tabindex', '-1');
+        err.setAttribute('aria-hidden', 'true');
         err.textContent = 'The account id provided is invalid';
 
         frm = document.createElement('form');
