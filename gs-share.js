@@ -60,12 +60,15 @@
 
         frm.setAttribute('class', 'gs-share-form');
         frm.setAttribute('tabindex', '-1');
+        frm.setAttribute('aria-hidden', 'true');
+
         frm.innerHTML = '<label for="gs-account">Your account ID:</label>' +
             '<input type="text" id="gs-account" placeholder="user@example.org" /><br />' +
             '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">Share as a bookmark</label><br />' +
             '<input type="submit" />';
-		frm.insertBefore(err, frm.firstChild);
+        frm.insertBefore(err, frm.firstChild);
 
+        // Submit handler
         frm.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -73,6 +76,8 @@
                 username, domain, xhr, bookmarkURL;
 
             if (accountParts.length === 2) {
+                err.setAttribute('aria-hidden', 'true');
+
                 username = accountParts[0];
                 domain = accountParts[1];
                 bookmarkURL = 'http://' + domain + '/api/bookmarks/' + username + '.json';
