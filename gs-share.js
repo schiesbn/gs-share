@@ -107,6 +107,14 @@
             }
         });
 
+        // Keydown handler
+        frm.addEventListener('keydown', function (e) {
+            if (e.keyCode === 27) { // Escape key closes the dialog
+                frm.parentElement.getElementsByClassName('js-gs-share')[0].focus();
+                frm.setAttribute('aria-hidden', 'true');
+            }
+        });
+
         document.body.appendChild(frm);
     };
 
