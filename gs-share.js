@@ -145,6 +145,8 @@
 
                     // Focus on form
                     frm.focus();
+                } else if (!frm.contains(target)) {
+                    frm.setAttribute('aria-hidden', 'true');
                 }
             }
         });
