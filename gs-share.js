@@ -141,7 +141,7 @@
                     target.parentNode.appendChild(frm);
 
                     // Show form
-                    frm.style.display = 'block';
+                    frm.setAttribute('aria-hidden', 'false');
 
                     // Focus on form
                     frm.focus();
