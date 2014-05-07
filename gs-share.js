@@ -18,7 +18,6 @@
 
     // TODO: input sanitation [1], [2]
     // TODO: server-side fallback if JS is disabled
-    // TODO: only hijack left-clicks (not right, middle) [4]
 
     var createForm,
         bindClicks,
@@ -123,21 +122,24 @@
             var target = e.target,
                 urlParams;
 
-            if (target.className.match(/js-gs-share/)) { // [4]
-                e.preventDefault();
+            // Don't do anything on right/middle click or if ctrl or shift was pressed while left-clicking
+            if (!e.button && !e.ctrlKey && !e.shiftKey) {
+                if (target.className.match(/js-gs-share/)) {
+                    e.preventDefault();
 
-                urlParams = extractURLParams(target.search);
-                shareURL   = urlParams.url;
-                shareTitle = urlParams.title;
+                    urlParams = extractURLParams(target.search);
+                    shareURL   = urlParams.url;
+                    shareTitle = urlParams.title;
 
-                // Move form after the clicked link
-                target.parentNode.appendChild(frm);
+                    // Move form after the clicked link
+                    target.parentNode.appendChild(frm);
 
-                // Show form
-                frm.style.display = 'block';
+                    // Show form
+                    frm.style.display = 'block';
 
-                // Focus on form
-                frm.focus();
+                    // Focus on form
+                    frm.focus();
+                }
             }
         });
     };
