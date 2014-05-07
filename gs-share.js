@@ -127,9 +127,15 @@
                 if (target.className.match(/js-gs-share/)) {
                     e.preventDefault();
 
-                    urlParams = extractURLParams(target.search);
-                    shareURL   = urlParams.url;
-                    shareTitle = urlParams.title;
+                    // Check for submission information in href first
+                    if (target.search !== undefined) {
+                        urlParams = extractURLParams(target.search);
+                        shareURL   = urlParams.url;
+                        shareTitle = urlParams.title;
+                    } else { // If it's not there, try data-* attributes. If not, use current document url and title
+                        shareURL   = target.getAttribute('data-url') || window.location.href;
+                        shareTitle = target.getAttribute('data-title') || document.title;
+                    }
 
                     // Move form after the clicked link
                     target.parentNode.appendChild(frm);
