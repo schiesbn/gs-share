@@ -64,8 +64,8 @@
         frm.setAttribute('aria-hidden', 'true');
 
         frm.innerHTML = '<label for="gs-account">Your account ID:</label>' +
-            '<input type="text" id="gs-account" placeholder="user@example.org" /><br />' +
-            '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">Share as a bookmark</label><br />' +
+            '<input type="text" id="gs-account" placeholder="user@example.org" />' +
+            '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">Share as a bookmark</label>' +
             '<input type="submit" />';
         frm.insertBefore(err, frm.firstChild);
 
