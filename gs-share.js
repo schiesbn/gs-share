@@ -26,7 +26,8 @@
         shareAsBookmark,
         extractURLParams,
         shareURL,
-        shareTitle;
+        shareTitle,
+        closest;
 
     shareAsNotice = function (title, url, domain) {
         window.location.href = 'http://' + domain + '/notice/new?status_textarea=' + title + ' ' + url; // [1]
@@ -118,37 +119,50 @@
         document.body.appendChild(frm);
     };
 
+    closest = function (elm, cls) {
+        var regex = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+
+        while (elm !== document) {
+            if (elm.className.match(regex)) {
+                return elm;
+            }
+
+            elm = elm.parentNode;
+        }
+
+        return false;
+    };
+
     bindClicks = function () {
         document.addEventListener('click', function (e) {
             var target = e.target,
-                urlParams;
+                urlParams,
+                lnk = closest(target, 'js-gs-share');
 
             // Don't do anything on right/middle click or if ctrl or shift was pressed while left-clicking
-            if (!e.button && !e.ctrlKey && !e.shiftKey) {
-                if (target.className.match(/js-gs-share/)) {
-                    e.preventDefault();
+            if (!e.button && !e.ctrlKey && !e.shiftKey && lnk) {
+                e.preventDefault();
 
-                    // Check for submission information in href first
-                    if (target.search !== undefined) {
-                        urlParams = extractURLParams(target.search);
-                        shareURL   = urlParams.url;
-                        shareTitle = urlParams.title;
-                    } else { // If it's not there, try data-* attributes. If not, use current document url and title
-                        shareURL   = target.getAttribute('data-url') || window.location.href;
-                        shareTitle = target.getAttribute('data-title') || document.title;
-                    }
-
-                    // Move form after the clicked link
-                    target.parentNode.appendChild(frm);
-
-                    // Show form
-                    frm.setAttribute('aria-hidden', 'false');
-
-                    // Focus on form
-                    frm.focus();
-                } else if (!frm.contains(target)) {
-                    frm.setAttribute('aria-hidden', 'true');
+                // Check for submission information in href first
+                if (lnk.search !== undefined) {
+                    urlParams = extractURLParams(lnk.search);
+                    shareURL   = urlParams.url;
+                    shareTitle = urlParams.title;
+                } else { // If it's not there, try data-* attributes. If not, use current document url and title
+                    shareURL   = lnk.getAttribute('data-url') || window.location.href;
+                    shareTitle = lnk.getAttribute('data-title') || document.title;
                 }
+
+                // Move form after the clicked link
+                lnk.parentNode.appendChild(frm);
+
+                // Show form
+                frm.setAttribute('aria-hidden', 'false');
+
+                // Focus on form
+                frm.focus();
+            } else if (!frm.contains(target)) {
+                frm.setAttribute('aria-hidden', 'true');
             }
         });
     };
