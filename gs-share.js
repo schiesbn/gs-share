@@ -120,10 +120,8 @@
     };
 
     closest = function (elm, cls) {
-        var regex = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-
         while (elm !== document) {
-            if (elm.className.match(regex)) {
+            if (elm.classList.contains(cls)) {
                 return elm;
             }
 
