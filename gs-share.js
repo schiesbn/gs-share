@@ -119,6 +119,12 @@
         document.body.appendChild(frm);
     };
 
+    /**
+     * Something similar to jQuery.closest
+     *
+     * Given `elm`, return the closest parent with class `cls`
+     * or false if there is no matching ancestor.
+     */
     closest = function (elm, cls) {
         while (elm !== document) {
             if (elm.classList.contains(cls)) {
