@@ -1,5 +1,13 @@
-.gs-share [aria-hidden="true"], .gs-share-form[aria-hidden="true"] {
+.js-gs-share, .gs-share [aria-hidden="true"], .gs-share-form[aria-hidden="true"] {
 	display: none;
+}
+
+.js-gs-share-enabled .js-gs-share {
+    display: inline;
+}
+
+.gs-share .js-gs-share[href] {
+    display: inline;
 }
 
 .gs-share [aria-hidden="false"], .gs-share-form[aria-hidden="false"] {

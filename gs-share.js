@@ -167,6 +167,9 @@
         });
     };
 
+    // Flag that js is enabled
+    document.body.classList.add('js-gs-share-enabled');
+
     createForm();
     bindClicks();
 }());
