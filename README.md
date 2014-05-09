@@ -34,7 +34,7 @@ Add the following at the bottom of your page.
 
 ### CSS
 
-Add the following in the <head> of your page.
+Add the following in the `<head>` of your page.
 
     <link rel="stylesheet" href="styles.css" />
 
