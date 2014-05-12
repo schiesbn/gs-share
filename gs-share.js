@@ -35,11 +35,11 @@
         closest;
 
     shareAsNotice = function (title, url, domain) {
-        window.location.href = 'http://' + domain + '/notice/new?status_textarea=' + title + ' ' + url; // [1]
+        window.open('http://' + domain + '/notice/new?status_textarea=' + title + ' ' + url); // [1]
     };
 
     shareAsBookmark = function (title, url, domain) {
-        window.location.href = 'http://' + domain + '/main/bookmark/new?url=' + url + '&title=' + title; // [2]
+        window.open('http://' + domain + '/main/bookmark/new?url=' + url + '&title=' + title); // [2]
     };
 
     extractURLParams = function (queryStr) {
