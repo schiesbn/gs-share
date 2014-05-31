@@ -33,17 +33,18 @@
         shareURL,
         shareTitle,
         closest,
-        i18n;
+        i18n = window.i18n;
 
-    if (window.i18n === undefined) {
+    /**
+     * Internationalization
+     */
+    if (i18n === undefined) {
         i18n = {
             invalidId: 'The account id provided is invalid',
             yourAcctId: 'Your account ID:',
             idPlaceholder: 'user@example.org',
             shareAsBookmark: 'Share as a bookmark'
         };
-    } else {
-        i18n = window.i18n;
     }
 
     shareAsNotice = function (title, url, domain) {
@@ -54,6 +55,14 @@
         window.open('http://' + domain + '/main/bookmark/new?url=' + url + '&title=' + title); // [2]
     };
 
+    /**
+     * Extract parameters from query string
+     *
+     * ex:
+     *   ?foo=bar&baz=test
+     * will return:
+     *   {foo: 'bar', baz: 'test'}
+     */
     extractURLParams = function (queryStr) {
         var parts = queryStr.substr(1).split('&'),
             i, len, keyVal, params = {};
