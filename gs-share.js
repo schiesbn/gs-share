@@ -5,6 +5,8 @@
 // @license magnet:?xt=urn:btih:3877d6d54b3accd4bc32f8a48bf32ebc0901502a&dn=mpl-2.0.txt MPL 2.0
 (function () {
     'use strict';
+    /* global i18n: true */
+
     /**
      * 'Share' widget for GNU social
      * http://code.chromic.org/project/view/2/
@@ -32,7 +34,19 @@
         extractURLParams,
         shareURL,
         shareTitle,
-        closest;
+        closest,
+        i18n;
+
+    if (window.i18n === undefined) {
+        i18n = {
+            invalidId: 'The account id provided is invalid',
+            yourAcctId: 'Your account ID:',
+            idPlaceholder: 'user@example.org',
+            shareAsBookmark: 'Share as a bookmark'
+        };
+    } else {
+        i18n = window.i18n;
+    }
 
     shareAsNotice = function (title, url, domain) {
         window.open('http://' + domain + '/notice/new?status_textarea=' + title + ' ' + url); // [1]
@@ -60,7 +74,7 @@
         err.setAttribute('class', 'gs-share-err');
         err.setAttribute('tabindex', '-1');
         err.setAttribute('aria-hidden', 'true');
-        err.textContent = 'The account id provided is invalid';
+        err.textContent = i18n.invalidId;
 
         frm = document.createElement('form');
 
@@ -68,9 +82,9 @@
         frm.setAttribute('tabindex', '-1');
         frm.setAttribute('aria-hidden', 'true');
 
-        frm.innerHTML = '<label for="gs-account">Your account ID:</label>' +
-            '<input type="text" id="gs-account" placeholder="user@example.org" />' +
-            '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">Share as a bookmark</label>' +
+        frm.innerHTML = '<label for="gs-account">' + i18n.yourAcctId + '</label>' +
+            '<input type="text" id="gs-account" placeholder="' + i18n.idPlaceholder + '" />' +
+            '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">' + i18n.shareAsBookmark + '</label>' +
             '<input type="submit" />';
         frm.insertBefore(err, frm.firstChild);
 
