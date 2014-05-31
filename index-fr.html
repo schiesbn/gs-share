@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Titre à partir du document</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .gs-share {margin-bottom: 12px;}
+  </style>
+</head>
+<body>
+
+<h2>Avec aide du serveur</h2>
+<div class="gs-share">
+  <a href="share.php?url=URL-du-href&amp;title=TITRE-du-href" class="js-gs-share">Partager sur GNU social</a>
+</div>
+
+<h2>Sans aide du serveur, sans attribut data-*. Partagera la page courante.</h2>
+<div class="gs-share">
+  <button class="js-gs-share">Partager sur GNU social</button>
+</div>
+
+<h2>Sans aide du serveur, avec attributs data-*</h2>
+<div class="gs-share">
+  <button data-url="URL-de-data" data-title="TITRE-de-data" class="js-gs-share">Partager sur GNU social</button>
+</div>
+
+<script src="js/locale/fr.js"></script>
+<script src="js/gs-share.js"></script>
+</body>
+</html>
