@@ -36,3 +36,12 @@
     display: block;
     margin-top: 8px;
 }
+
+.gs-share--icon {
+    border: none;
+    cursor: pointer;
+    min-height: 32px;
+    padding: 0;
+    padding-left: 33px;
+    background: url("../images/gs-share.png") no-repeat left center;
+}
