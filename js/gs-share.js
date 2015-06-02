@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     /**
      * 'Share' widget for GNU social
-     * http://code.chromic.org/project/view/2/
+     * https://github.com/chimo/gs-share
      *
      * We make a few assumptions about the target instance:
      *   1) The API root is in the default location
