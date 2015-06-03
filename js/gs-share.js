@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
             invalidId: 'The account id provided is invalid',
             yourAcctId: 'Your account ID:',
             idPlaceholder: 'user@example.org',
-            shareAsBookmark: 'Share as a bookmark'
+            shareAsBookmark: 'Share as a bookmark',
+            submit: 'Share'
         };
     }
 
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         frm.innerHTML = '<label for="gs-account">' + i18n.yourAcctId + '</label>' +
             '<input type="text" id="gs-account" placeholder="' + i18n.idPlaceholder + '" />' +
             '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">' + i18n.shareAsBookmark + '</label>' +
-            '<input type="submit" />';
+            '<input type="submit" value=\''+ i18n.submit + '\'/>';
         frm.insertBefore(err, frm.firstChild);
 
         // Submit handler
