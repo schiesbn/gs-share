@@ -31,6 +31,13 @@
          *
          * "Share as a bookmark"
          */
-        shareAsBookmark: "Partager en format signet"
+        shareAsBookmark: "Partager en format signet",
+
+        /**
+         * Submit button
+         *
+         * "Share"
+         */
+        submit: "Partager"
     };
 }());
