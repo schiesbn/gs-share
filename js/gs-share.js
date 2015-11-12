@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * or false if there is no matching ancestor.
      */
     closest = function (elm, cls) {
-        while (elm !== document) {
+        while (elm !== document && elm !== null) {
             if (elm.classList.contains(cls)) {
                 return elm;
             }
