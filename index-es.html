@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Compartir en GNU Social de TEDIC</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .gs-share {margin-bottom: 12px;}
+  </style>
+</head>
+<body>
+
+<h2>Con server-side fallback</h2>
+<div class="gs-share">
+  <a href="gs-share.php?url=URL-from-href&amp;title=TITLE-from-href" class="js-gs-share">Compartir en GNU Social</a>
+</div>
+
+<h2>Sin server-side fallback, sin atributos data-* . Se va a copartir la página actual.</h2>
+<div class="gs-share">
+  <button class="js-gs-share">Compartir en GNU Social</button>
+</div>
+
+<h2>Sin server-side fallback, usando atributos data-* </h2>
+<div class="gs-share">
+  <button data-url="URL-from-data" data-title="TITLE-from-data" class="js-gs-share">Compartir en GNU Social</button>
+</div>
+
+<h2>Usando la clase "gs-share--icon"</h2>
+<div class="gs-share">
+  <button data-url="URL-from-data" data-title="TITLE-from-data" class="js-gs-share gs-share--icon">Compartir en GNU Social</button>
+</div>
+
+<script src="js/gs-share.js"></script>
+<script src="js/locale/es.js"></script>
+</body>
+</html>
