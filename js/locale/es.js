@@ -7,14 +7,14 @@
          *
          * "The account id provided is invalid"
          */
-        invalidId: "Le compte fourni n'est pas valide.",
+        invalidId: "La cuenta proporcionada no es válida.",
 
         /**
          * Form label
          *
          * "Your account ID:"
          */
-        yourAcctId: "Votre compte :",
+        yourAcctId: "ID en GNUSocial:",
 
         /**
          * Form placeholder
@@ -24,20 +24,20 @@
          *
          * "user@example.org"
          */
-        idPlaceholder: "utilisateur@example.org",
+        idPlaceholder: "usuario@example.org",
 
         /**
          * Checkbox label
          *
          * "Share as a bookmark"
          */
-        shareAsBookmark: "Partager en format signet",
+        shareAsBookmark: "Compartir como marcador",
 
         /**
          * Submit button
          *
          * "Share"
          */
-        submit: "Partager"
+        submit: "Compartir"
     };
 }());

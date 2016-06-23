@@ -25,6 +25,12 @@ Add one of the following where you want the links/buttons to appear.
       <button data-url="URL-from-data" data-title="TITLE-from-data" class="js-gs-share">Share on GNU social</button>
     </div>
 
+#### "Icon" class
+
+    <div class="gs-share">
+      <button data-url="URL-from-data" data-title="TITLE-from-data" class="js-gs-share gs-share--icon">Share on GNU social</button>
+    </div>
+
 ### JavaScript
 
 Add the following at the bottom of your page.

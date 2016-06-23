@@ -3,11 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // @license magnet:?xt=urn:btih:3877d6d54b3accd4bc32f8a48bf32ebc0901502a&dn=mpl-2.0.txt MPL 2.0
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     /**
      * 'Share' widget for GNU social
-     * http://code.chromic.org/project/view/2/
+     * https://github.com/chimo/gs-share
      *
      * We make a few assumptions about the target instance:
      *   1) The API root is in the default location
@@ -43,7 +43,8 @@
             invalidId: 'The account id provided is invalid',
             yourAcctId: 'Your account ID:',
             idPlaceholder: 'user@example.org',
-            shareAsBookmark: 'Share as a bookmark'
+            shareAsBookmark: 'Share as a bookmark',
+            submit: 'Share'
         };
     }
 
@@ -92,7 +93,7 @@
         frm.innerHTML = '<label for="gs-account">' + i18n.yourAcctId + '</label>' +
             '<input type="text" id="gs-account" placeholder="' + i18n.idPlaceholder + '" />' +
             '<input type="checkbox" checked id="gs-bookmark" /> <label for="gs-bookmark">' + i18n.shareAsBookmark + '</label>' +
-            '<input type="submit" />';
+            '<input type="submit" value=\''+ i18n.submit + '\'/>';
         frm.insertBefore(err, frm.firstChild);
 
         // Submit handler
@@ -152,7 +153,7 @@
      * or false if there is no matching ancestor.
      */
     closest = function (elm, cls) {
-        while (elm !== document) {
+        while (elm !== document && elm !== null) {
             if (elm.classList.contains(cls)) {
                 return elm;
             }
@@ -202,5 +203,5 @@
 
     createForm();
     bindClicks();
-}());
+});
 // @license-end
